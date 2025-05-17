@@ -22,7 +22,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server
-    await client.connect();
+    // await client.connect();
 
     const coffeesCollection = client.db("coffeeDB").collection("coffees");
     const usersCollection = client.db("coffeeDB").collection("Users");
@@ -31,6 +31,7 @@ async function run() {
     app.get("/coffees", async (req, res) => {
       // const cursor = coffeesCollection.find()
       // const result = await cursor.toArray()
+
 
       const result = await coffeesCollection.find().toArray();
       res.send(result);
@@ -81,6 +82,7 @@ async function run() {
     // display data
     app.get("/users", async (req, res) => {
       const result = await usersCollection.find().toArray();
+      console.log(result);
       res.send(result);
     });
 
